@@ -35,11 +35,11 @@ export NODE_ENV=${NODE_ENV:-production}
 export PATH="$HOME/.heroku/java/bin:$PATH"
 export JAVA_HOME="$HOME/.heroku/java"
 
-export PATH="$HOME/.heroku/swift/clang/bin:$PATH"
-export CLANG_HOME="$HOME/.heroku/swift/clang"
+#export PATH="$HOME/.heroku/swift/clang/bin:$PATH"
+#export CLANG_HOME="$HOME/.heroku/swift/clang"
 
-export PATH="$HOME/.heroku/swift/bin:$PATH"
-export SWIFT_HOME="$HOME/.heroku/swift"
+#export PATH="$HOME/.heroku/swift/bin:$PATH"
+#export SWIFT_HOME="$HOME/.heroku/swift"
 
 export PATH="$HOME/.heroku/cf:$PATH"
 

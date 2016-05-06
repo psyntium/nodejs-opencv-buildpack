@@ -103,7 +103,7 @@ install_bins() {
   warn_old_npm
   
   install_java "$java_engine" "$BUILD_DIR/.heroku/java"
-  install_swift "$swift_engine" "$BUILD_DIR/.heroku/swift"
+#  install_swift "$swift_engine" "$BUILD_DIR/.heroku/swift"
   install_cfcli "$BUILD_DIR/.heroku/cf"
 }
 
