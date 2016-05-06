@@ -39,6 +39,7 @@ source $BP_DIR/lib/failure.sh
 source $BP_DIR/lib/environment.sh
 source $BP_DIR/lib/binaries.sh
 source $BP_DIR/lib/binaries_java.sh
+source $BP_DIR/lib/binaries_swift.sh
 source $BP_DIR/lib/binaries_cfcli.sh
 source $BP_DIR/lib/cache.sh
 source $BP_DIR/lib/dependencies.sh
@@ -80,6 +81,7 @@ install_bins() {
   local iojs_engine=$(read_json "$BUILD_DIR/package.json" ".engines.iojs")
   local npm_engine=$(read_json "$BUILD_DIR/package.json" ".engines.npm")
   local java_engine=$(read_json "$BUILD_DIR/package.json" ".engines.java")
+  local swift_engine=$(read_json "$BUILD_DIR/package.json" ".engines.swift")
 
   if [ -n "$iojs_engine" ]; then
     echo "engines.iojs (package.json):  $iojs_engine (iojs)"
@@ -101,6 +103,7 @@ install_bins() {
   warn_old_npm
   
   install_java "$java_engine" "$BUILD_DIR/.heroku/java"
+  install_swift "$swift_engine" "$BUILD_DIR/.heroku/swift"
   install_cfcli "$BUILD_DIR/.heroku/cf"
 }
 
