@@ -14,11 +14,7 @@ subtitle() {
 ###################################
 shopt -s extglob
 
-if [ $(uname) == Darwin ]; then
-    sed() { command sed -l "$@"; }
-else
-    sed() { command sed -u "$@"; }
-fi
+sed() { command sed -u "$@"; }
 
 # Does some serious copying.
 deep-cp() {
