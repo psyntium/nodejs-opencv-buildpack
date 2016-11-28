@@ -28,14 +28,22 @@ detect_memory() {
   esac
 }
 
+
+export PATH="$PATH:$HOME/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/sbin:/bin"
+
 export PATH="$HOME/.heroku/node/bin:$PATH:$HOME/bin:$HOME/node_modules/.bin"
 export NODE_HOME="$HOME/.heroku/node"
 export NODE_ENV=${NODE_ENV:-production}
 
-export PATH="$HOME/.heroku/java/bin:$PATH"
-export JAVA_HOME="$HOME/.heroku/java"
+export LD_LIBRARY_PATH="$BUILD_DIR/.heroku/vendor/lib/"
+export PATH="$PATH:$HOME/.heroku/vendor/bin"
+export PYTHONPATH="$HOME/usr/local/lib:$BUILD_DIR/.heroku/vendor/lib/python2.7/site-packages/"
 
-export PATH="$HOME/.heroku/maven/bin:$PATH"
+
+#export PATH="$HOME/.heroku/java/bin:$PATH"
+#export JAVA_HOME="$HOME/.heroku/java"
+
+#export PATH="$HOME/.heroku/maven/bin:$PATH"
 
 #export PATH="$HOME/.heroku/swift/clang/bin:$PATH"
 #export CLANG_HOME="$HOME/.heroku/swift/clang"
