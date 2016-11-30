@@ -1,56 +1,30 @@
 #!/usr/bin/env bash
 
+title() {
+  echo "-----> $*"
+}
+
+subtitle() {
+  echo "       $*"
+}
+
+sed() { command sed -u "$@"; }
 # SBL takes in BUILD_DIR CACHE_DIR ENV_DIR
 install_opencv() {
 
-	title() {
-	  echo "-----> $*"
-	}
-
-	subtitle() {
-	  echo "       $*"
-	}
+	
 
 	# Taken from python heroku buildpack
 	###################################
 	shopt -s extglob
 
-	sed() { command sed -u "$@"; }
 
 	# Does some serious copying.
-	deep-cp() {
-		echo "Deep Copying from " $1 " to " $2
-		
-		declare source="$1" target="$2"
-		
-		mkdir -p "$target"
+	
 
-		# cp doesn't like being called without source params,
-		# so make sure they expand to something first.
-		# subshell to avoid surprising caller with shopts.
-		(
-		shopt -s nullglob dotglob
-		set -- "$source"/
-		[[ $# == 0 ]] || cp -a "$@" "$target"
-		)
-	}
+	
 
-	# Does some serious moving.
-	deep-mv() {
-		echo "Deep Moving from " $1 " to " $2
-		deep-cp "$1" "$2"
-		deep-rm "$1"
-	}
-
-	# Does some serious deleting.
-	deep-rm() {
-	  # subshell to avoid surprising caller with shopts.
-		(
-			shopt -s dotglob
-			rm -rf "$1"/
-		)
-	}
-	###################################
+	
 
 	BUILD_DIR=$1
 	CACHE_DIR=$2
@@ -103,4 +77,38 @@ install_opencv() {
 
 	title "Buildpack installed."
 	
+}
+
+deep-cp() {
+	echo "Deep Copying from " $1 " to " $2
+
+	declare source="$1" target="$2"
+
+	mkdir -p "$target"
+
+	# cp doesn't like being called without source params,
+	# so make sure they expand to something first.
+	# subshell to avoid surprising caller with shopts.
+	(
+	shopt -s nullglob dotglob
+	set -- "$source"/
+	[[ $# == 0 ]] || cp -a "$@" "$target"
+	)
+}
+
+# Does some serious deleting.
+deep-rm() {
+  # subshell to avoid surprising caller with shopts.
+	(
+		shopt -s dotglob
+		rm -rf "$1"/
+	)
+}
+###################################
+
+# Does some serious moving.
+deep-mv() {
+	echo "Deep Moving from " $1 " to " $2
+	deep-cp "$1" "$2"
+	deep-rm "$1"
 }
