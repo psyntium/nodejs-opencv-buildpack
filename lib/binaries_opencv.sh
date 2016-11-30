@@ -30,7 +30,7 @@ install_opencv() {
 		# subshell to avoid surprising caller with shopts.
 		(
 		shopt -s nullglob dotglob
-		set -- "$source"/#!(tmp|.|..)
+		set -- "$source"/
 		[[ $# == 0 ]] || cp -a "$@" "$target"
 		)
 	}
@@ -46,7 +46,7 @@ install_opencv() {
 	  # subshell to avoid surprising caller with shopts.
 		(
 			shopt -s dotglob
-			rm -rf "$1"#/!(tmp|.|..)
+			rm -rf "$1"/
 		)
 	}
 	###################################
@@ -54,7 +54,7 @@ install_opencv() {
 	BUILD_DIR=$1
 	CACHE_DIR=$2
 
-	APP_DIR="/home/vcap/app"
+	APP_DIR="/app"
 	deep-mv $BUILD_DIR $APP_DIR
 	ORIG_BUILD_DIR=$BUILD_DIR
 	BUILD_DIR=$APP_DIR
