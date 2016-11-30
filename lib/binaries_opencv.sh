@@ -19,10 +19,10 @@ install_opencv() {
 
 	# Does some serious copying.
 	deep-cp() {
+		echo "Deep Copying from " $1 " to " $2
+		
 		declare source="$1" target="$2"
 		
-		echo "Deep Copying from " $1 " to " $2
-
 		mkdir -p "$target"
 
 		# cp doesn't like being called without source params,
@@ -37,6 +37,7 @@ install_opencv() {
 
 	# Does some serious moving.
 	deep-mv() {
+		echo "Deep Moving from " $1 " to " $2
 		deep-cp "$1" "$2"
 		deep-rm "$1"
 	}
