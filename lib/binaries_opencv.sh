@@ -88,11 +88,10 @@ install_opencv() {
 	# TODO remove the below PATH if python is still having issues
 	title "Creating environment variables."
 	mkdir -p $BUILD_DIR/.profile.d
-	cat <<EOF >$BUILD_DIR/.profile.d/5251124.sh
-		export LD_LIBRARY_PATH="\$HOME/.heroku/vendor/lib/:\$HOME/.heroku/vendor/lib/:\$LD_LIBRARY_PATH"
-		export PATH="\$HOME/usr/local/bin:\$HOME/.heroku/vendor/bin:\$PATH"
-		export PYTHONPATH="\$HOME/usr/local/lib/python2.7/site-packages/:\$HOME/.heroku/vendor/lib/:\$HOME/.heroku/vendor/lib/python2.7/site-packages/"
-	EOF
+	echo 'export LD_LIBRARY_PATH="\$HOME/.heroku/vendor/lib/:\$HOME/.heroku/vendor/lib/:\$LD_LIBRARY_PATH"; ' > $BUILD_DIR/.profile.d/5251124.sh
+	echo 'export PATH="\$HOME/usr/local/bin:\$HOME/.heroku/vendor/bin:\$PATH"; ' >> $BUILD_DIR/.profile.d/5251124.sh
+	echo 'export PYTHONPATH="\$HOME/usr/local/lib/python2.7/site-packages/:\$HOME/.heroku/vendor/lib/:\$HOME/.heroku/vendor/lib/python2.7/site-packages/"; ' >> $BUILD_DIR/.profile.d/5251124.sh
+	cat $BUILD_DIR/.profile.d/5251124.sh
 	# export "\$LIBRARY_PATH=\$HOME/.heroku/vendor/lib/:\$LIBRARY_PATH"
 	# export "\$LD_LIBRARY_PATH=\$HOME/.heroku/vendor/lib/:\$LD_LIBRARY_PATH"
 	# export "\$PATH=\$HOME/.heroku/vendor/lib/:\$PATH"
