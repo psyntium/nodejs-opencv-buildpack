@@ -99,7 +99,7 @@ install_bins() {
   fi
   warn_old_npm
   
-  install_opencv "$opencv_engine" "$BUILD_DIR/.heroku/vendor"
+  install_opencv $BUILD_DIR $CACHE_DIR
 }
 
 header "Installing binaries"
