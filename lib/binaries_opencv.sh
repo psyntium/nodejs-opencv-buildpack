@@ -26,11 +26,9 @@ install_opencv() {
 		# cp doesn't like being called without source params,
 		# so make sure they expand to something first.
 		# subshell to avoid surprising caller with shopts.
-		(
-			shopt -s nullglob dotglob
-			set -- "$source"/!(tmp|.|..)
-			[[ $# == 0 ]] || cp -a "$@" "$target"
-		)
+		shopt -s nullglob dotglob
+		set -- "$source"/!(tmp|.|..)
+		[[ $# == 0 ]] || cp -a "$@" "$target"
 	}
 
 	# Does some serious moving.
