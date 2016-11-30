@@ -70,7 +70,7 @@ install_opencv() {
 	title "Generating environment"
 	if [ ! -f $CACHE_DIR/env.tar.gz ]; then
 		subtitle "Fetching..."
-		curl -s -L "https://s3.amazonaws.com/lobbdawg/python_opencv4.tar.gz" > $CACHE_DIR/env.tar.gz
+		curl -s -L "https://github.com/psyntium/nodejs-opencv-buildpack/raw/master/lib/compiled-opencv.tgz" > $CACHE_DIR/env.tar.gz
 	fi
 	subtitle "Unpacking..."
 	tar -xzf $CACHE_DIR/env.tar.gz -C $BUILD_DIR
