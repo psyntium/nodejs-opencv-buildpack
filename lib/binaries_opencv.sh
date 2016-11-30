@@ -30,7 +30,7 @@ install_opencv() {
 		# subshell to avoid surprising caller with shopts.
 		(
 		shopt -s nullglob dotglob
-		#set -- "$source"/!(tmp|.|..)
+		set -- "$source"/#!(tmp|.|..)
 		[[ $# == 0 ]] || cp -a "$@" "$target"
 		)
 	}
@@ -46,7 +46,7 @@ install_opencv() {
 	  # subshell to avoid surprising caller with shopts.
 		(
 			shopt -s dotglob
-			rm -rf "$1"/!(tmp|.|..)
+			rm -rf "$1"#/!(tmp|.|..)
 		)
 	}
 	###################################
