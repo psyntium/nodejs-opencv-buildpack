@@ -18,20 +18,11 @@ install_opencv() {
 	###################################
 	shopt -s extglob
 
-
-	# Does some serious copying.
-	
-
-	
-
-	
-	echo $1
-	echo $2
 	BUILD_DIR=$1
 	CACHE_DIR=$2
 
 	APP_DIR="/app"
-	deep-mv $BUILD_DIR $APP_DIR
+	deep-cp $BUILD_DIR $APP_DIR
 	ORIG_BUILD_DIR=$BUILD_DIR
 	BUILD_DIR=$APP_DIR
 	cd $BUILD_DIR
@@ -67,14 +58,14 @@ install_opencv() {
 	echo 'export LD_LIBRARY_PATH="\$HOME/.heroku/vendor/lib/:\$HOME/.heroku/vendor/lib/:\$LD_LIBRARY_PATH"; ' > $BUILD_DIR/.profile.d/5251124.sh
 	echo 'export PATH="\$HOME/usr/local/bin:\$HOME/.heroku/vendor/bin:\$PATH"; ' >> $BUILD_DIR/.profile.d/5251124.sh
 	echo 'export PYTHONPATH="\$HOME/usr/local/lib/python2.7/site-packages/:\$HOME/.heroku/vendor/lib/:\$HOME/.heroku/vendor/lib/python2.7/site-packages/"; ' >> $BUILD_DIR/.profile.d/5251124.sh
-	cat $BUILD_DIR/.profile.d/5251124.sh
+	#cat $BUILD_DIR/.profile.d/5251124.sh
 	# export "\$LIBRARY_PATH=\$HOME/.heroku/vendor/lib/:\$LIBRARY_PATH"
 	# export "\$LD_LIBRARY_PATH=\$HOME/.heroku/vendor/lib/:\$LD_LIBRARY_PATH"
 	# export "\$PATH=\$HOME/.heroku/vendor/lib/:\$PATH"
 	# export "\$PYTHONPATH=\$HOME/.heroku/vendor/lib/:\$PYTHONPATH"
 	# above lines didn't do anything
 
-	deep-mv $BUILD_DIR $ORIG_BUILD_DIR
+	deep-cp $BUILD_DIR $ORIG_BUILD_DIR
 
 	title "Buildpack installed."
 	
@@ -111,5 +102,5 @@ deep-rm() {
 deep-mv() {
 	echo "Deep Moving from " $1 " to " $2
 	deep-cp "$1" "$2"
-	deep-rm "$1"
+	#deep-rm "$1"
 }
