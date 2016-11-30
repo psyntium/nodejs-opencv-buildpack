@@ -25,7 +25,8 @@ install_opencv() {
 	
 
 	
-
+	echo $1
+	echo $2
 	BUILD_DIR=$1
 	CACHE_DIR=$2
 
