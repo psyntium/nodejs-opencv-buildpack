@@ -52,7 +52,7 @@ install_opencv() {
 	BUILD_DIR=$1
 	CACHE_DIR=$2
 
-	APP_DIR="/app"
+	APP_DIR="/home/vcap/app"
 	deep-mv $BUILD_DIR $APP_DIR
 	ORIG_BUILD_DIR=$BUILD_DIR
 	BUILD_DIR=$APP_DIR
